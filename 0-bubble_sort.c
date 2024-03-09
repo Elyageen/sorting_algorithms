@@ -15,15 +15,15 @@
 */
 void bubble_sort(int *array, size_t size)
 {
-	if (array == NULL || size < 2)
-	{
-		return; /* Nothing to sort*/
-	}
 	size_t i, j;
 	int temp;
 
 	int swapped;
 
+	if (array == NULL || size < 2)
+	{
+		return; /* Nothing to sort*/
+	}
 	for (i = 0; i < size - 1; i++)
 	{
 		swapped = 0; /* Initialize swapped to 0 */
