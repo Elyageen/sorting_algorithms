@@ -1,35 +1,41 @@
 #include "sort.h"
 
 /**
-* insertion_sort_list - Sorts a doubly linked list of integers
-*                       in ascending order using the Insertion Sort algorithm
-* @list: Double pointer to the head of the list
-*/
-void insertion_sort_list(listint_t **list)
+ * bubble_sort - Sorts an array of integers in ascending order using
+ *               the Bubble sort algorithm
+ * @array: The array to be sorted
+ * @size: Number of elements in the array
+ *
+ * Description: This function sorts an array of integers in ascending order
+ *              using the Bubble sort algorithm. It iterates through the array
+ *              and compares adjacent elements, swapping them if they are in
+ *              the wrong order. It continues this process until the array
+ *              is sorted. The `print_array` function is called after each
+ *              swap to print the array's current state.
+ */
+void bubble_sort(int *array, size_t size)
 {
-	listint_t *current, *next_node;
+	size_t i, j;
+	int temp;
+	int swapped;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
-	current = (*list)->next;
-	while (current != NULL)
+	for (i = 0; i < size - 1; i++)
 	{
-		next_node = current->next;
-		while (current->prev != NULL && current->n < current->prev->n)
+		swapped = 0; /* Initialize swapped to 0 */
+		for (j = 0; j < size - i - 1; j++)
 		{
-			current->prev->next = current->next;
-			if (current->next != NULL)
-				current->next->prev = current->prev;
-			current->next = current->prev;
-			current->prev = current->prev->prev;
-			current->next->prev = current;
-			if (current->prev != NULL)
-				current->prev->next = current;
-			else
-				*list = current;
-			print_list(*list);
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+				print_array(array, size); /* Print the array after each swap */
+				swapped = 1; /* Set swapped to 1 to indicate a swap occurred */
+			}
 		}
-		current = next_node;
+
+		/* If no two were swapped in the inner loop, then the array is sorted */
+		if (swapped == 0)
+			break;
 	}
 }
