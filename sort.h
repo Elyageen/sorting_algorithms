@@ -6,9 +6,9 @@
 /* Struct for doubly linked list node */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+    const int n;                /* Integer stored in the node */
+    struct listint_s *prev;    /* Pointer to the previous element of the list */
+    struct listint_s *next;    /* Pointer to the next element of the list */
 } listint_t;
 
 /* Function prototypes */
