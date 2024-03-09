@@ -1,23 +1,24 @@
-#include <stdio.h>
-#include <stddef.h>
+#include "sort.h"
 
 /**
  * print_array - Prints an array of integers
- *
  * @array: The array to be printed
- * @size: Number of elements in @array
+ * @size: Number of elements in the array
+ *
+ * Description: This function prints an array of integers, separated by commas,
+ *              followed by a newline character. It iterates through the array
+ *              and prints each element, preceded by a comma and space (except
+ *              for the first element).
  */
 void print_array(const int *array, size_t size)
 {
-    size_t i;
+	size_t i;
 
-    printf("[");
-    for (i = 0; i < size; i++)
-    {
-        printf("%d", array[i]);
-        if (i < size - 1)
-            printf(", ");
-    }
-    printf("]\n");
+	for (i = 0; i < size; i++)
+	{
+		if (i > 0)
+			printf(", ");
+		printf("%d", array[i]);
+	}
+	printf("\n");
 }
-
